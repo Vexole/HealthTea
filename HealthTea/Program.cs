@@ -1,12 +1,20 @@
 using HealthTea.Data;
+using HealthTea.Data.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IIngredientService, IngredientService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IOriginService, OriginService>();
+builder.Services.AddScoped<ITeaService, TeaService>();
+
 //DbContext Configuration
-builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext")));
 
 var app = builder.Build();
 
@@ -29,4 +37,5 @@ app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
+SeedDB.Seed(app);
 app.Run();
