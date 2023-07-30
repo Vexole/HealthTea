@@ -72,7 +72,7 @@
 							<a class="btn btn-outline-primary float-right" asp-action="Index">
 								Back to List
 							</a>
-							<a class="btn btn-success text-white  @(Model.Status) ? " " : " disabled")"
+							<a class="btn btn-success text-white @((Model.Status) ? "" : " disabled"))"
 							   asp-controller="Orders"
 							   asp-action="AddItemToCart" 
 							   asp-route-id="@Model.Id">
