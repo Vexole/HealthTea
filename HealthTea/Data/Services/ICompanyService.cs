@@ -3,7 +3,7 @@ using HealthTea.Models;
 
 namespace HealthTea.Data.Services
 {
-    public interface ICompanyService : IEntityBaseRepository<Company>
+    public interface ICompanyService : IBaseEntityRepository<Company>
     {
     }
 }

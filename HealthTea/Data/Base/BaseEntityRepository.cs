@@ -4,10 +4,10 @@ using System.Linq.Expressions;
 
 namespace HealthTea.Data.Base
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
+    public class BaseEntityRepository<T> : IBaseEntityRepository<T> where T : class, IBaseEntity, new()
     {
         private readonly AppDbContext _context;
-        public EntityBaseRepository(AppDbContext context)
+        public BaseEntityRepository(AppDbContext context)
         {
             _context = context;
         }

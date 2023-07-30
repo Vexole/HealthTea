@@ -4,7 +4,7 @@ using HealthTea.Models;
 
 namespace HealthTea.Data.Services
 {
-    public interface ITeaService : IEntityBaseRepository<Tea>
+    public interface ITeaService : IBaseEntityRepository<Tea>
     {
         Task<Tea> GetTeaByIdAsync(int id);
 

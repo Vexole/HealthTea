@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthTea.Data.Services
 {
-	public class TeaService : EntityBaseRepository<Tea>, ITeaService
+	public class TeaService : BaseEntityRepository<Tea>, ITeaService
 	{
 		private AppDbContext _context;
 		public TeaService(AppDbContext context) : base(context)

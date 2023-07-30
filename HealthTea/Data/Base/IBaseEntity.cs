@@ -1,6 +1,6 @@
 ﻿namespace HealthTea.Data.Base
 {
-    public interface IEntityBase
+    public interface IBaseEntity
     {
         int Id { get; set; }
     }

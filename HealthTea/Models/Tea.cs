@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthTea.Models
 {
-    public class Tea : IEntityBase
+    public class Tea : IBaseEntity
 	{
 		[Key]
 		public int Id { get; set; }

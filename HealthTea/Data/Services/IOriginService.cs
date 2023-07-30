@@ -3,7 +3,7 @@ using HealthTea.Models;
 
 namespace HealthTea.Data.Services
 {
-    public interface IOriginService : IEntityBaseRepository<Origin>
+    public interface IOriginService : IBaseEntityRepository<Origin>
     {
     }
 }

@@ -56,7 +56,6 @@ namespace HealthTea.Controllers
 			return View(teaDetails);
 		}
 
-
 		public async Task<IActionResult> Edit(int id)
 		{
 			var teaDetails = await _service.GetTeaByIdAsync(id);
@@ -99,6 +98,18 @@ namespace HealthTea.Controllers
 			}
 			await _service.UpdateTeaAsync(teaViewModel);
 			return RedirectToAction(nameof(Index));
+		}
+
+		public async Task<IActionResult> Filter(string searchString)
+		{
+			var teas = await _service.GetAllAsync(t => t.Origin, t => t.Company);
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				var filteredTeas = teas.Where(tea => tea.Name.ToLower().Contains(searchString.ToLower()) 
+					|| tea.Description.ToLower().Contains(searchString.ToLower())).ToList();
+				return View("Index", filteredTeas);
+			}
+			return View("Index", teas);
 		}
 	}
 }

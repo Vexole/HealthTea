@@ -15,11 +15,10 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @tea.Name
-                                    <a class="text-white float-right" asp-action="Edit" asp-route-id="@tea.Id"><i class="bi bi-pencil-square"></i></a>
-                                    @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                                     {
-                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
-                                    }*@
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@tea.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }
                                 </h5>
                             </p>
                         </div>
@@ -56,7 +55,7 @@
                                 </a>
                                 <a class="btn btn-success text-white @(tea.Status ? "" : " disabled" )"
                                    asp-controller="Orders"
-                                   asp-action="AddItemToShoppingCart"
+                                   asp-action="AddItemToCart"
                                    asp-route-id="@tea.Id">
                                     <i class="bi bi-cart-plus"></i> Add to Cart
                                 </a>

@@ -2,7 +2,7 @@
 
 namespace HealthTea.Data.Base
 {
-    public interface IEntityBaseRepository<T> where T: class, IEntityBase, new()
+    public interface IBaseEntityRepository<T> where T: class, IBaseEntity, new()
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties);

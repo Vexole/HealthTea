@@ -1,10 +1,11 @@
 ﻿using HealthTea.Data.Enums;
+using HealthTea.Data.Static;
 using HealthTea.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace HealthTea.Data
 {
-	public class SeedDB
+    public class SeedDB
 	{
 		public static void Seed(IApplicationBuilder applicationBuilder)
 		{
@@ -48,7 +49,6 @@ namespace HealthTea.Data
 					context.SaveChanges();
 				}
 
-				// Ingredients
 				if (!context.Ingredients.Any())
 				{
 					context.Ingredients.AddRange(new List<Ingredient>()
@@ -63,7 +63,6 @@ namespace HealthTea.Data
 					context.SaveChanges();
 				}
 
-				// Company
 				if (!context.Companies.Any())
 				{
 					context.Companies.AddRange(new List<Company>()
@@ -77,7 +76,6 @@ namespace HealthTea.Data
 					context.SaveChanges();
 				}
 
-				// Teas
 				if (!context.Teas.Any())
 				{
 					context.Teas.AddRange(new List<Tea>()
@@ -97,7 +95,6 @@ namespace HealthTea.Data
 					context.SaveChanges();
 				}
 
-				// Ingredients & Tea
 				if (!context.Ingredients_Teas.Any())
 				{
 					context.Ingredients_Teas.AddRange(new List<Ingredient_Tea>()
@@ -111,57 +108,53 @@ namespace HealthTea.Data
 					context.SaveChanges();
 				}
 			}
-
 		}
 
-		/*public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+		public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
 		{
 			using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
 			{
 
-				//Roles
 				var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
 				if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
 					await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+
 				if (!await roleManager.RoleExistsAsync(UserRoles.User))
 					await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
-				//Users
 				var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-				string adminUserEmail = "admin@etickets.com";
+				string adminUserEmail = "admin@healthtea.com";
 
 				var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
 				if (adminUser == null)
 				{
-					var newAdminUser = new ApplicationUser()
+					var newAdmin = new ApplicationUser
 					{
-						FullName = "Admin User",
-						UserName = "admin-user",
+						FullName = "Admin",
+						UserName = "admin",
 						Email = adminUserEmail,
 						EmailConfirmed = true
 					};
-					await userManager.CreateAsync(newAdminUser, "Coding@1234?");
-					await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+					await userManager.CreateAsync(newAdmin, "Coding@1234?");
+					await userManager.AddToRoleAsync(newAdmin, UserRoles.Admin);
 				}
 
-
-				string appUserEmail = "user@etickets.com";
-
-				var appUser = await userManager.FindByEmailAsync(appUserEmail);
+				string userEmail = "john@doe.com";
+				var appUser = await userManager.FindByEmailAsync(userEmail);
 				if (appUser == null)
 				{
-					var newAppUser = new ApplicationUser()
+					var newUser = new ApplicationUser
 					{
-						FullName = "Application User",
-						UserName = "app-user",
-						Email = appUserEmail,
+						FullName = "John Doe",
+						UserName = "john.doe",
+						Email = userEmail,
 						EmailConfirmed = true
 					};
-					await userManager.CreateAsync(newAppUser, "Coding@1234?");
-					await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+					await userManager.CreateAsync(newUser, "Coding@1234?");
+					await userManager.AddToRoleAsync(newUser, UserRoles.User);
 				}
 			}
-		}*/
+		}
 	}
 }

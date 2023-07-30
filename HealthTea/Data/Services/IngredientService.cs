@@ -3,7 +3,7 @@ using HealthTea.Models;
 
 namespace HealthTea.Data.Services
 {
-    public class IngredientService : EntityBaseRepository<Ingredient>, IIngredientService
+    public class IngredientService : BaseEntityRepository<Ingredient>, IIngredientService
     {
         public IngredientService(AppDbContext context) : base(context) { }
 

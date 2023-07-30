@@ -1,9 +1,10 @@
 ﻿using HealthTea.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthTea.Data
 {
-	public class AppDbContext : DbContext
+	public class AppDbContext : IdentityDbContext<ApplicationUser>
 	{
         public DbSet<Company> Companies { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
@@ -11,8 +12,11 @@ namespace HealthTea.Data
         public DbSet<Tea> Teas { get; set; }
 		public DbSet<Ingredient_Tea> Ingredients_Teas { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
-		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
 		{
 		}
 

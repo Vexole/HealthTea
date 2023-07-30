@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HealthTea.Models
 {
-	public class Ingredient : IEntityBase
+	public class Ingredient : IBaseEntity
 	{
         [Key]
         public int Id { get; set; }
