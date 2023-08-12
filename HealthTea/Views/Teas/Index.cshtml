@@ -1,71 +1,74 @@
 ﻿@model IEnumerable<Tea>
 
 @{
-    ViewData["Title"] = "Teas";
+	ViewData["Title"] = "Teas";
 }
 
 <div class="row">
-    @foreach (var tea in Model)
-    {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @tea.Name
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                    {
-                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@tea.Id"><i class="bi bi-pencil-square"></i></a>
-                                    }
-                                </h5>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@tea.ImageUrl" width="100%" alt="@tea.Name">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <p class="card-text">@tea.Description</p>
-                            <p class="card-text"><b>Origin: </b>@tea.Origin.Name</p>
-                            <p class="card-text"><b>Category: </b>@tea.TeaCategory</p>
-                            <p class="card-text"><b>Company: </b>@tea.Company.Name</p>
-                            <p class="card-text"><b>Price: </b>@tea.Price.ToString("c")</p>
-                            <p class="card-text ">
-                                <b>Status: </b>
-                                @if (tea.Status)
-                                {
-                                    <span class="badge bg-success text-white">In Stock</span>
-                                }
-                                else
-                                {
-                                    <span class="badge bg-danger text-white">Out of Stock</span>
-                                }
-                            </p>
+	@foreach (var tea in Model)
+	{
+		<div class="col-md-4 col-xs-6 border-primary mb-3">
+			<div class="card mb-3" style="max-width: 540px;">
+				<div class="row g-0">
+					<div class="col-md-12">
+						<div class="card-header text-white bg-info">
+							<p class="card-text">
+								<h5 class="card-title">
+									@tea.Name
+									@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+									{
+										<a class="text-white float-right" asp-action="Edit" asp-route-id="@tea.Id"><i class="bi bi-pencil-square"></i></a>
+									}
+								</h5>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<img src="@tea.ImageUrl" width="100%" alt="@tea.Name">
+					</div>
+					<div class="col-md-6">
+						<div class="card-body">
+							<p class="card-text">@tea.Description</p>
+							<p class="card-text"><b>Origin: </b>@tea.Origin.Name</p>
+							<p class="card-text"><b>Category: </b>@tea.TeaCategory</p>
+							<p class="card-text"><b>Company: </b>@tea.Company.Name</p>
+							<p class="card-text"><b>Price: </b>@tea.Price.ToString("c")</p>
+							<p class="card-text ">
+								<b>Status: </b>
+								@if (tea.Status)
+								{
+									<span class="badge bg-success text-white">In Stock</span>
+								}
+								else
+								{
+									<span class="badge bg-danger text-white">Out of Stock</span>
+								}
+							</p>
 
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <p class="card-text">
-                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@tea.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
-                                </a>
-                                <a class="btn btn-success text-white @(tea.Status ? "" : " disabled" )"
-                                   asp-controller="Orders"
-                                   asp-action="AddItemToCart"
-                                   asp-route-id="@tea.Id">
-                                    <i class="bi bi-cart-plus"></i> Add to Cart
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="card-footer ">
+							<p class="card-text">
+								<a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@tea.Id">
+									<i class="bi bi-eye-fill"></i> Show Details
+								</a>
+								@if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
+								{
+									<a class="btn btn-success text-white @(tea.Status ? "" : " disabled" )"
+									   asp-controller="Orders"
+									   asp-action="AddItemToCart"
+									   asp-route-id="@tea.Id">
+										<i class="bi bi-cart-plus"></i> Add to Cart
+									</a>
+								}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
 </div>
 
 @await Html.PartialAsync("_CreateItem", "Teas")

@@ -10,21 +10,21 @@ namespace HealthTea.Controllers
 	[Authorize]
 	public class OrdersController : Controller
 	{
-		private readonly ITeaService _teasService;
 		private readonly Cart _cart;
+		private readonly ITeaService _teasService;
 		private readonly IOrdersService _ordersService;
 
-		public OrdersController(ITeaService teasService, Cart cart, IOrdersService ordersService)
+		public OrdersController(Cart cart, ITeaService teasService, IOrdersService ordersService)
 		{
-			_teasService = teasService;
 			_cart = cart;
+			_teasService = teasService;
 			_ordersService = ordersService;
 		}
 
 		public async Task<IActionResult> Index()
 		{
-			string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-			string userRole = User.FindFirstValue(ClaimTypes.Role);
+			string userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+			string userRole = User.FindFirstValue(ClaimTypes.Role) ?? string.Empty;
 
 			var orders = await _ordersService.GetOrdersByUserIdAndRoleAsync(userId, userRole);
 			return View(orders);
@@ -69,8 +69,8 @@ namespace HealthTea.Controllers
 		public async Task<IActionResult> CompleteOrder()
 		{
 			var items = _cart.GetCartItems();
-			string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-			string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
+			string userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
+			string userEmailAddress = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
 
 			await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
 			await _cart.ClearCartAsync();

@@ -14,8 +14,8 @@ namespace HealthTea.Data.ViewComponents
         public IViewComponentResult Invoke()
         {
             var items = _cart.GetCartItems();
-
-            return View(items.Count);
+            var quantity = items.Sum(x => x.Quantity);
+            return View(quantity);
         }
     }
 }

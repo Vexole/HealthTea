@@ -1,4 +1,4 @@
-﻿namespace HealthTea.Data.Static
+﻿namespace HealthTea.Data.Constants
 {
     public static class UserRoles
     {

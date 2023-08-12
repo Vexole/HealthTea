@@ -1,5 +1,5 @@
 ﻿using HealthTea.Data;
-using HealthTea.Data.Static;
+using HealthTea.Data.Constants;
 using HealthTea.Data.ViewModels;
 using HealthTea.Models;
 using Microsoft.AspNetCore.Identity;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthTea.Controllers
 {
-	public class AccountController : Controller
+    public class AccountController : Controller
 	{
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
@@ -27,7 +27,10 @@ namespace HealthTea.Controllers
 			return View(users);
 		}
 
-		public IActionResult Login() => View(new LoginViewModel());
+		public IActionResult Login()
+		{
+			return View(new LoginViewModel());
+		}
 
 		[HttpPost]
 		public async Task<IActionResult> Login(LoginViewModel loginViewModel)
@@ -43,18 +46,21 @@ namespace HealthTea.Controllers
 					var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
 					if (result.Succeeded)
 					{
-						return RedirectToAction("Index", "Teas");
+						return RedirectToAction(nameof(Index), "Teas");
 					}
 				}
-				TempData["Error"] = "Invalid credentials. Please, try again!";
+				TempData["Error"] = ErrorMessages.INVALID_CREDENTIALS;
 				return View(loginViewModel);
 			}
 
-			TempData["Error"] = "Invalid credentials. Please, try again!";
+			TempData["Error"] = ErrorMessages.INVALID_CREDENTIALS;
 			return View(loginViewModel);
 		}
 
-		public IActionResult Register() => View(new RegisterViewModel());
+		public IActionResult Register()
+		{
+			return View(new RegisterViewModel());
+		}
 
 		[HttpPost]
 		public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
@@ -64,7 +70,7 @@ namespace HealthTea.Controllers
 			var user = await _userManager.FindByEmailAsync(registerViewModel.EmailAddress);
 			if (user != null)
 			{
-				TempData["Error"] = "This email address is already in use";
+				TempData["Error"] = ErrorMessages.EMAIL_ADDRESS_IN_USE;
 				return View(registerViewModel);
 			}
 
@@ -82,7 +88,7 @@ namespace HealthTea.Controllers
 			}
 			else
 			{
-				var errorMessage = "Registration Failed:";
+				var errorMessage = ErrorMessages.REGISTRATION_FAILED;
 				newUserResponse.Errors.ToList().ForEach(error =>
 				{
 					errorMessage += error.Description.ToString() + "\n";
@@ -91,17 +97,17 @@ namespace HealthTea.Controllers
 				return View(registerViewModel);
 			}
 
-			return View("RegisterCompleted");
+			return View("RegistrationCompleted");
 		}
 
 		[HttpPost]
 		public async Task<IActionResult> Logout()
 		{
 			await _signInManager.SignOutAsync();
-			return RedirectToAction("Index", "Teas");
+			return RedirectToAction(nameof(Index), "Teas");
 		}
 
-		public IActionResult AccessDenied(string returnUrl)
+		public IActionResult AccessDenied()
 		{
 			return View();
 		}

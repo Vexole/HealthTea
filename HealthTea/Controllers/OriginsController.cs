@@ -20,12 +20,18 @@ namespace HealthTea.Controllers
 			return View(origins);
 		}
 
+		[Authorize]
 		public IActionResult Create()
 		{
-			return View();
+			if (User.IsInRole("Admin"))
+			{
+				return View();
+			}
+			return RedirectToAction("AccessDenied", "Account");
 		}
 
 		[HttpPost]
+		[Authorize]
 		public async Task<IActionResult> Create([Bind("ImageUrl, Name")] Origin origin)
 		{
 			if (!ModelState.IsValid)
@@ -45,15 +51,20 @@ namespace HealthTea.Controllers
 			return View(originDetails);
 		}
 
-
+		[Authorize]
 		public async Task<IActionResult> Edit(int id)
 		{
-			var originDetails = await _service.GetByIdAsync(id);
-			if (originDetails == null) return View("NotFound");
-			return View(originDetails);
+			if (User.IsInRole("Admin"))
+			{
+				var originDetails = await _service.GetByIdAsync(id);
+				if (originDetails == null) return View("NotFound");
+				return View(originDetails);
+			}
+			return RedirectToAction("AccessDenied", "Account");
 		}
 
 		[HttpPost]
+		[Authorize]
 		public async Task<IActionResult> Edit(int id, [Bind("Id, Name, ImageUrl")] Origin origin)
 		{
 			if (!ModelState.IsValid)
@@ -64,14 +75,20 @@ namespace HealthTea.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
+		[Authorize]
 		public async Task<IActionResult> Delete(int id)
 		{
-			var originDetails = await _service.GetByIdAsync(id);
-			if (originDetails == null) return View("NotFound");
-			return View(originDetails);
+			if (User.IsInRole("Admin"))
+			{
+				var originDetails = await _service.GetByIdAsync(id);
+				if (originDetails == null) return View("NotFound");
+				return View(originDetails);
+			}
+			return RedirectToAction("AccessDenied", "Account");
 		}
 
 		[HttpPost, ActionName("Delete")]
+		[Authorize]
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
 			var originDetails = await _service.GetByIdAsync(id);

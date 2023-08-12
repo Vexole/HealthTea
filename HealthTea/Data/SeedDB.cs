@@ -1,5 +1,5 @@
-﻿using HealthTea.Data.Enums;
-using HealthTea.Data.Static;
+﻿using HealthTea.Data.Constants;
+using HealthTea.Data.Enums;
 using HealthTea.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -15,7 +15,6 @@ namespace HealthTea.Data
 
 				context.Database.EnsureCreated();
 
-				// Origin
 				if (!context.Origins.Any())
 				{
 					context.Origins.AddRange(new List<Origin>()
@@ -136,7 +135,7 @@ namespace HealthTea.Data
 						Email = adminUserEmail,
 						EmailConfirmed = true
 					};
-					await userManager.CreateAsync(newAdmin, "Coding@1234?");
+					await userManager.CreateAsync(newAdmin, "HealthTea@123!");
 					await userManager.AddToRoleAsync(newAdmin, UserRoles.Admin);
 				}
 
@@ -151,7 +150,7 @@ namespace HealthTea.Data
 						Email = userEmail,
 						EmailConfirmed = true
 					};
-					await userManager.CreateAsync(newUser, "Coding@1234?");
+					await userManager.CreateAsync(newUser, "HealthTea@123!");
 					await userManager.AddToRoleAsync(newUser, UserRoles.User);
 				}
 			}
