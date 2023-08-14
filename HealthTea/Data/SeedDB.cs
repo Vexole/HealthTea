@@ -19,27 +19,27 @@ namespace HealthTea.Data
 				{
 					context.Origins.AddRange(new List<Origin>()
 					{
-						new Origin()
+						new Origin
 						{
 							Name = "China",
 							ImageUrl = "https://res.cloudinary.com/dbmmtklps/image/upload/v1690641568/china_wgzivp.png",
 						},
-						new Origin()
+						new Origin
 						{
 							Name = "Taiwan",
 							ImageUrl = "https://res.cloudinary.com/dbmmtklps/image/upload/v1690641568/taiwan_zysquu.png",
 						},
-						new Origin()
+						new Origin
 						{
 							Name = "Japan",
 							ImageUrl = "https://res.cloudinary.com/dbmmtklps/image/upload/v1690641568/japan_qaybfj.png",
 						},
-						new Origin()
+						new Origin
 						{
 							Name = "India",
 							ImageUrl = "https://res.cloudinary.com/dbmmtklps/image/upload/v1690641568/india_dbj1qz.png",
 						},
-						new Origin()
+						new Origin
 						{
 							Name = "Sri Lanka",
 							ImageUrl = "https://res.cloudinary.com/dbmmtklps/image/upload/v1690641568/srilanka_qo0xsr.png",
@@ -50,51 +50,51 @@ namespace HealthTea.Data
 
 				if (!context.Ingredients.Any())
 				{
-					context.Ingredients.AddRange(new List<Ingredient>()
+					context.Ingredients.AddRange(new List<Ingredient>
 					{
-						new Ingredient()
+						new Ingredient
 						{
 							Name = "Peppermint leaves",
 							ImageUrl = "https://res.cloudinary.com/dbmmtklps/image/upload/v1690641767/peppermint_leaves_kj4so1.jpg",
 
 						},
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Orange",
                             ImageUrl = "https://www.allrecipes.com/thmb/y_uvjwXWAuD6T0RxaS19jFvZyFU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1205638014-2000-d0fbf9170f2d43eeb046f56eec65319c.jpg",
 
                         },
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Blueberry",
                             ImageUrl = "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSLBRJfSJABUvT7tJeDy4RGOsuQb6Li-p-D-8zYZCyqtLRhgHtItinCALqqOp-sjx85b1nJqPyBx865SqU",
 
                         },
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Ginseng",
                             ImageUrl = "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/ginseng-root-on-cutting-board-1296x728.jpg?w=1155&h=989",
 
                         },
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Vanilla",
                             ImageUrl = "https://www.escoffier.edu/wp-content/uploads/vanilla-pods-and-beans-can-be-used-to-bring-fresh-vanilla-flavor-to-your_1028_40079119_1_14104505_500.jpg",
 
                         },
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Honey",
                             ImageUrl = "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/04/honey-1296x728-header.jpg?w=1155&h=1528",
 
                         },
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Lemon",
                             ImageUrl = "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/lemon-health-benefits-1296x728-feature.jpg?w=1155&h=1528",
 
                         },
-                        new Ingredient()
+                        new Ingredient
                         {
                             Name = "Strawberry",
                             ImageUrl = "https://hips.hearstapps.com/clv.h-cdn.co/assets/15/22/1432664914-strawberry-facts1.jpg?resize=980:*",
@@ -106,7 +106,7 @@ namespace HealthTea.Data
 
 				if (!context.Companies.Any())
 				{
-					context.Companies.AddRange(new List<Company>()
+					context.Companies.AddRange(new List<Company>
 					{
 						new Company
 						{
@@ -135,9 +135,9 @@ namespace HealthTea.Data
 
 				if (!context.Teas.Any())
 				{
-					context.Teas.AddRange(new List<Tea>()
+					context.Teas.AddRange(new List<Tea>
 					{
-						new Tea()
+						new Tea
 						{
 							Name = "Lipton Green Tea",
 							Description = "Lipton Green Tea for a refreshing and uplifting sensation 100% Rainforest Alliance Certified 200 g 100 tea bags",
@@ -148,7 +148,7 @@ namespace HealthTea.Data
 							TeaCategory = TeaCategory.Green,
 							Status = true
 						},
-                        new Tea()
+                        new Tea
                         {
                             Name = "Lipton Yellow Label Tea",
                             Description = "Lipton Yellow Label Black Tea, Medium Caffeine, for an uniquely refreshing taste, 100% Rainforest Alliance Certified, 100 tea bags",
@@ -159,7 +159,7 @@ namespace HealthTea.Data
                             TeaCategory = TeaCategory.Yellow,
                             Status = true
                         },
-                        new Tea()
+                        new Tea
                         {
                             Name = "Tetley Tea Strawberry",
                             Description = "Tetley Tea Strawberry Specialty Tea, 24-Count",
@@ -170,7 +170,7 @@ namespace HealthTea.Data
                             TeaCategory = TeaCategory.Earl_Grey,
                             Status = true
                         },
-                        new Tea()
+                        new Tea
                         {
                             Name = "Tetley Tea Blueberry",
                             Description = "Tetley Tea Blueberry Green Tea, 24-Count",
@@ -181,7 +181,7 @@ namespace HealthTea.Data
                             TeaCategory = TeaCategory.Green,
                             Status = true
                         },
-                        new Tea()
+                        new Tea
                         {
                             Name = "Tetley Orange Pekoe",
                             Description = "Tetley Orange Pekoe Black Tea - 72 Tea Bags, 227 Grams, Contains Caffeine",
@@ -192,7 +192,7 @@ namespace HealthTea.Data
                             TeaCategory = TeaCategory.Black,
                             Status = true
                         },
-                        new Tea()
+                        new Tea
                         {
                             Name = "Tim Hortons Orange Pekoe",
                             Description = "Tim Hortons Orange Pekoe Tea Bags, Classic Steeped Tea, 108ct Pack",
@@ -203,7 +203,7 @@ namespace HealthTea.Data
                             TeaCategory = TeaCategory.Herbal,
                             Status = true
                         },
-                        new Tea()
+                        new Tea
                         {
                             Name = "Red Rose Tea Bags",
                             Description = "Red RoseTea Bags, 100-Count",
@@ -214,7 +214,7 @@ namespace HealthTea.Data
                             TeaCategory = TeaCategory.White,
                             Status = true
                         },
-                        new Tea()
+                        new Tea
                         {
                             Name = "VAHDAM, Organic Turmeric Ginger Tea",
                             Description = "VAHDAM, Organic Turmeric Ginger Herbal Tea (100 Tea Bags) | USDA Certified",
@@ -231,49 +231,64 @@ namespace HealthTea.Data
 
 				if (!context.Ingredients_Teas.Any())
 				{
-					context.Ingredients_Teas.AddRange(new List<Ingredient_Tea>()
+					context.Ingredients_Teas.AddRange(new List<Ingredient_Tea>
 					{
-						new Ingredient_Tea()
+						new Ingredient_Tea
 						{
 							IngredientId = 1,
 							TeaId = 1
 						},
-                        new Ingredient_Tea()
+						new Ingredient_Tea
+						{
+							IngredientId = 7,
+							TeaId = 1
+						},
+						new Ingredient_Tea
                         {
                             IngredientId = 5,
                             TeaId = 2
                         },
-                        new Ingredient_Tea()
+                        new Ingredient_Tea
                         {
                             IngredientId = 8,
                             TeaId = 3
                         },
-                        new Ingredient_Tea()
+                        new Ingredient_Tea
                         {
                             IngredientId = 3,
                             TeaId = 4
                         },
-                        new Ingredient_Tea()
+                        new Ingredient_Tea
                         {
                             IngredientId = 2,
                             TeaId = 5
                         },
-                        new Ingredient_Tea()
+                        new Ingredient_Tea
                         {
                             IngredientId = 2,
                             TeaId = 6
                         },
-                        new Ingredient_Tea()
+						new Ingredient_Tea
+						{
+							IngredientId = 7,
+							TeaId = 6
+						},
+						new Ingredient_Tea
                         {
                             IngredientId = 6,
                             TeaId = 7
                         },
-                        new Ingredient_Tea()
+                        new Ingredient_Tea
                         {
                             IngredientId = 4,
                             TeaId = 8
                         },
-                    });
+						new Ingredient_Tea
+						{
+							IngredientId = 6,
+							TeaId = 8
+						},
+					});
 					context.SaveChanges();
 				}
 			}
