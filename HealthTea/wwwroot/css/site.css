@@ -57,6 +57,7 @@ body {
 
 .teaimg{
     height:300px;
+    object-fit: contain;
 }
 
 .card-header{
@@ -67,7 +68,7 @@ body {
     background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;
     padding: 15px;
-    margin-top:50px;
+    margin-top:20px;
 }
 
 .btn-show-details {
@@ -105,6 +106,10 @@ body{
     animation: pulse 2s infinite;
 }
 
+.btn-search {
+    height: 46px;
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -119,10 +124,13 @@ body{
     }
 }
 
-.detailsset{
-    width:90% !important;
-    margin: 0 auto;
+.border-info {
+    border: 3px solid #17a2b8;
+}
 
+.detailsset {
+    width: 90% !important;
+    margin: 0 auto;
 }
 
 .leftcontent{
@@ -130,8 +138,11 @@ body{
     margin-top:30px;
 }
 
-.ingtest{
-    width:100px;
+.ingtest {
+    width: 100px;
+    max-width: 100px;
+    height: 100px;
+    object-fit: contain
 }
 
 .martop{
@@ -260,10 +271,34 @@ body{
     }
 }
 
+.container {
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+}
+
+.order-completed-container {
+    background-color: #f4f4f4;
+}
+
+.logo-heading {
+    font-family: "Arial", sans-serif;
+    font-size: 3rem;
+    color: #27ae60; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .logo-heading {
+        font-size: 2rem;
+    }
+
+    .container {
+        display: flex !important;
+    }
 
 .animated-form {
     animation: slideIn 0.5s ease-out;
- 
 }
 
 .form-container {

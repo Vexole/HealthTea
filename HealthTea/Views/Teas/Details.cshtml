@@ -5,8 +5,8 @@
 }
 
 <div class="row">
-	<div class="col-md-8  detailsset">
-		<div class="card mb-12">
+	<div class="col-md-8 detailsset">
+		<div class="card mb-12 p-4">
 			<div class="row g-0">
 				<div class="col-md-12">
 					<div class="card-header text-white bg-info">
@@ -50,19 +50,22 @@
 						<p class="card-text"><b>Price: </b>@Model.Price.ToString("c")</p>
 
 						<p class="card-text">
-							<b>Ingredient: </b>
-						
-							<div class="row">
+							<b>Ingredients:</b>
+							<div class="row flex-wrap">
 								@foreach (var ingredient in Model.Ingredients_Teas)
 								{
-									<div class="column">
-										<img class="border-info rounded-circle ingtest" src="@ingredient.Ingredient.ImageUrl" style="max-width: 150px" />
-										<br />
-										<a asp-controller="Ingredients" asp-action="Details" asp-route-id="@ingredient.IngredientId">@ingredient.Ingredient.Name</a>
+									<div class="col-md-3 col-6 mb-4">
+										<div class="ingredient-item text-center">
+											<img class="rounded-circle ingtest border-info" src="@ingredient.Ingredient.ImageUrl" />
+											<p class="ingredient-name mt-2">
+												<a asp-controller="Ingredients" asp-action="Details" asp-route-id="@ingredient.IngredientId">@ingredient.Ingredient.Name</a>
+											</p>
+										</div>
 									</div>
 								}
 							</div>
 						</p>
+
 
 					</div>
 				</div>

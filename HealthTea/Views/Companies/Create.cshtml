@@ -4,51 +4,56 @@
     ViewData["Title"] = "Add Company";
 }
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1>Add New Company</h1>
-        </p>
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="text-center">
+                <h1>Add New Company</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                    <div class="form-group text-center">
-                        <img id="ImagePreview" class="border-info rounded-circle" style="max-width: 150px" />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ImageUrl" class="control-label"></label>
-                        <input asp-for="ImageUrl" class="form-control" />
-                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
+                        <div class="form-group text-center">
+                            <img id="ImagePreview" class="rounded-circle img-thumbnail" style="max-width: 150px" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImageUrl" class="control-label">Company Logo</label>
+                            <input asp-for="ImageUrl" class="form-control" type="file" accept=".jpg, .jpeg, .png" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Company Name</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
 
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                            <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts{ 
+@section Scripts{
     <script>
-
         $(document).ready(function () {
             var output = document.getElementById('ImagePreview');
-            output.src = $("#ImageUrl").val();
-        })
+            var imageUrl = $("#ImageUrl").val();
+            if (imageUrl) {
+                output.src = URL.createObjectURL(event.target.files[0]);
+            }
 
-        $("#ImageUrl").on("change", function () {
-            var output = document.getElementById('ImagePreview');
-            output.src = $(this).val();
-        })
+            $("#ImageUrl").on("change", function () {
+                if (this.files && this.files[0]) {
+                    output.src = URL.createObjectURL(this.files[0]);
+                }
+            });
+        });
     </script>
 }
