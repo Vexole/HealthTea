@@ -8,22 +8,23 @@
 
 <div class="container cart-summary">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            @if (Model.Cart.CartItems.Count == 0)
-            {
-                <div class="text-center empty-cart">
-                    <p>No items in your cart yet.</p>
-                    <a class="btn btn-outline-success" asp-controller="Teas" asp-action="Index">Add Items</a>
-                </div>
-            }
-            else
-            {
+
+        @if (Model.Cart.CartItems.Count == 0)
+        {
+            <div class="text-center empty-cart">
+                <p class="no-items">No items in your cart yet.</p>
+                <a class="btn btn-outline-success mb-3" asp-controller="Teas" asp-action="Index">Add Items</a>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-8 offset-md-2">
                 <div class="text-center cart-header">
                     <h2>Your Shopping Cart Summary</h2>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive mt-4">
+                    <table class="cartTable table">
                         <thead>
                             <tr>
                                 <th>S.N.</th>
@@ -46,11 +47,11 @@
                                     <td>
                                         <div class="cart-actions">
                                             <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromCart"
-                                               asp-route-id="@item.Tea.Id">
+                                       asp-route-id="@item.Tea.Id">
                                                 <i class="bi bi-dash-circle"></i>
                                             </a>
                                             <a class="text-success" asp-controller="Orders" asp-action="AddItemToCart"
-                                               asp-route-id="@item.Tea.Id">
+                                       asp-route-id="@item.Tea.Id">
                                                 <i class="bi bi-plus-circle"></i>
                                             </a>
                                         </div>
@@ -71,10 +72,10 @@
 
                 <div class="text-center cart-actions">
                     <div id="paypal-btn"></div>
-                    <a class="btn btn-outline-success" asp-controller="Teas" asp-action="Index">Add More Items</a>
+                    <a class="btn btn-outline-success mt-2" asp-controller="Teas" asp-action="Index">Add More Items</a>
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
 </div>
 

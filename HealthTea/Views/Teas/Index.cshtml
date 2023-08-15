@@ -4,6 +4,7 @@
 	ViewData["Title"] = "Teas";
 }
 
+<div class="jumbotron"></div>
 <div class="row">
 	@foreach (var tea in Model)
 	{
@@ -11,7 +12,7 @@
 			<div class="card mb-3" style="max-width: 540px;">
 				<div class="row g-0">
 					<div class="col-md-12">
-						<div class="card-header text-white bg-info">
+						<div class="card-header text-white primaryColor">
 							<p class="card-text">
 								<h5 class="card-title">
 									@tea.Name
@@ -23,14 +24,11 @@
 							</p>
 						</div>
 					</div>
-					<div class="col-md-6 cenimg pulse-animation">
-						<img class="teaimg  fade-in" src="@tea.ImageUrl" width="100%" alt="@tea.Name">
+					<div class="col-md-10 cenimg pulse-animation">
+						<img class="teaimg fade-in" src="@tea.ImageUrl" width="100%" alt="@tea.Name">
 					</div>
 					<div class="col-md-6 widthtest">
 						<div class="card-body cendata">
-						@*	<p class="card-text">@tea.Description</p>
-							<p class="card-text"><b>Origin: </b>@tea.Origin.Name</p>
-							<p class="card-text"><b>Category: </b>@tea.TeaCategory</p>*@
 							<p class="card-text"><b>Company: </b>@tea.Company.Name</p>
 							<p class="card-text"><b>Price: </b>@tea.Price.ToString("c")</p>
 							<p class="card-text ">

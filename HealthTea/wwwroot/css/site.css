@@ -1,20 +1,20 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .jumbotron {
@@ -28,12 +28,31 @@ body {
     margin-bottom: 30px;
 }
 
-.widthtest{
-    width:70% !important;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.widthtest {
+    width: 70% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
+}
+
+.widthtest p {
+    margin-bottom: 4px !important;
+ }
+
+.no-items{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.primaryColor {
+    background-color: #00662A;
+}
+
+
+.empty-cart {
+    background-color: beige;
 }
 
 .cendata {
@@ -43,32 +62,35 @@ body {
     flex-direction: column;
 }
 
-.cenimg{
+.cenimg {
     margin: 0 auto;
-    margin-top:30px;
-    
+    margin-top: 30px;
 }
 
-.detcen{
-    display:flex;
-    justify-content:center;
-    background:none !important;
+.detcen {
+    display: flex;
+    justify-content: center;
+    background: none !important;
 }
 
-.teaimg{
-    height:300px;
+.teaimg {
+    height: 300px;
     object-fit: contain;
 }
 
-.card-header{
-    text-align:center;
+.card-header {
+    text-align: center;
 }
 
 .card-footer {
     background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;
     padding: 15px;
-    margin-top:20px;
+    margin-top: 18px;
+}
+
+.greyColor {
+    background-color: #e3e3e3;
 }
 
 .btn-show-details {
@@ -98,8 +120,8 @@ body {
     pointer-events: none;
 }
 
-body{
-    font-family:cursive;
+body {
+    font-family: cursive;
 }
 
 .pulse-animation img {
@@ -133,9 +155,9 @@ body{
     margin: 0 auto;
 }
 
-.leftcontent{
-    margin-left:100px;
-    margin-top:30px;
+.leftcontent {
+    margin-left: 100px;
+    margin-top: 30px;
 }
 
 .ingtest {
@@ -145,8 +167,8 @@ body{
     object-fit: contain
 }
 
-.martop{
-    margin-top:30px;
+.martop {
+    margin-top: 30px;
 }
 
 .col-md-4 {
@@ -163,26 +185,51 @@ body{
     }
 
 .table {
-    width: 100%;
+    width: 80% !important;
     border-collapse: collapse;
     border: 2px solid #ddd;
     margin-bottom: 20px;
+    margin: auto;
 }
 
-    .table th, .table td {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
+.fullTable {
+    width: 100% !important;
+    border-collapse: collapse;
+    border: 2px solid #ddd;
+    margin-bottom: 20px;
+    margin: auto;
+}
 
-    .table th {
-        background-color: #f2f2f2;
-    }
+.tea-main-container {
+    border: 1px solid #e3e3e3;
+    padding: 0px !important;
+}
 
-    .table a {
-        text-decoration: none;
-        margin: 0 5px;
-    }
+.tea-title{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.align-middle {
+    text-align: center !important;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table a {
+    text-decoration: none;
+    margin: 0 5px;
+}
 
 
 @keyframes fadeIn {
@@ -200,15 +247,14 @@ body{
 }
 
 
-.logo{
-    width:20%;
+.logo {
+    width: 20%;
 }
 
 
-.searchinp{
-    width:160px;
+.searchinp {
+    width: 160px;
 }
-
 
 
 .table {
@@ -284,7 +330,7 @@ body{
 .logo-heading {
     font-family: "Arial", sans-serif;
     font-size: 3rem;
-    color: #27ae60; 
+    color: #27ae60;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -297,74 +343,73 @@ body{
         display: flex !important;
     }
 
-.animated-form {
-    animation: slideIn 0.5s ease-out;
-}
+    .animated-form {
+        animation: slideIn 0.5s ease-out;
+    }
 
-.form-container {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+    .form-container {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
 
-.btn {
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-outline-success {
-    background-color: transparent;
-    border-color: #28a745;
-    color: #28a745;
-}
-
-.btn-outline-secondary {
-    background-color: transparent;
-    border-color: #6c757d;
-    color: #6c757d;
-}
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 
 
-.btn:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-.form-control {
+    .btn-outline-success {
+        background-color: transparent;
+        border-color: #28a745;
+        color: #28a745;
+    }
 
-    transition: border-color 0.3s ease;
-}
-
-
-.btn {
-   
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-
-.form-control:hover {
-    border-color: #28a745; 
-}
+    .btn-outline-secondary {
+        background-color: transparent;
+        border-color: #6c757d;
+        color: #6c757d;
+    }
 
 
-.btn:hover {
-    background-color: #28a745; 
-    color: #fff; 
-    border-color: #28a745; 
-}
+    .btn:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 
-.sign{
-    margin-left:180px;
+    .form-control {
+        transition: border-color 0.3s ease;
+    }
+
+
+    .btn {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+
+    .form-control:hover {
+        border-color: #28a745;
+    }
+
+
+    .btn:hover {
+        background-color: #28a745;
+        color: #fff;
+        border-color: #28a745;
+    }
+
+    .sign {
+        margin-left: 180px;
+    }
 }

@@ -11,25 +11,25 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="form-group text-center">
-                        <img class="border-info rounded-circle ingredient-image" src="@Model.ImageUrl" alt="@Model.Name" />
+                        <img class="rounded-circle ingredient-image" src="@Model.ImageUrl" alt="@Model.Name" />
                     </div>
                     <div class="form-group">
                         <label asp-for="ImageUrl" class="control-label">Image</label>
                         <input asp-for="ImageUrl" class="form-control" readonly />
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                         <label asp-for="Name" class="control-label">Name</label>
                         <input asp-for="Name" class="form-control" readonly />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group text-center">
+                    <div class="form-group text-center mt-4">
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
                         }
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                        <a class="btn btn-outline-secondary text-black" asp-action="Index">Show All</a>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,11 @@ namespace HealthTea.Data.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var items = _cart.GetCartItems();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return View(0);
+            }
+                var items = _cart.GetCartItems();
             var quantity = items.Sum(x => x.Quantity);
             return View(quantity);
         }
