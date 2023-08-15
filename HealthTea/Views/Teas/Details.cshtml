@@ -5,8 +5,8 @@
 }
 
 <div class="row">
-	<div class="col-md-8 offset-2">
-		<div class="card mb-12">
+	<div class="col-md-8 detailsset">
+		<div class="card mb-12 p-4">
 			<div class="row g-0">
 				<div class="col-md-12">
 					<div class="card-header text-white bg-info">
@@ -17,11 +17,11 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<img src="@Model.ImageUrl" width="100%" alt="@Model.Name">
+				<div class="col-md-4 martop">
+					<img class="" src="@Model.ImageUrl" width="100%" alt="@Model.Name">
 				</div>
 				<div class="col-md-8">
-					<div class="card-body">
+					<div class="card-body leftcontent">
 						<p class="card-text">@Model.Description</p>
 						<p class="card-text">
 							<b>Origin: </b>
@@ -50,19 +50,22 @@
 						<p class="card-text"><b>Price: </b>@Model.Price.ToString("c")</p>
 
 						<p class="card-text">
-							<b>Ingredient: </b>
-							<hr />
-							<div class="row">
+							<b>Ingredients:</b>
+							<div class="row flex-wrap">
 								@foreach (var ingredient in Model.Ingredients_Teas)
 								{
-									<div class="column text-center">
-										<img class="border-info rounded-circle" src="@ingredient.Ingredient.ImageUrl" style="max-width: 150px" />
-										<br />
-										<a asp-controller="Ingredients" asp-action="Details" asp-route-id="@ingredient.IngredientId">@ingredient.Ingredient.Name</a>
+									<div class="col-md-3 col-6 mb-4">
+										<div class="ingredient-item text-center">
+											<img class="rounded-circle ingtest border-info" src="@ingredient.Ingredient.ImageUrl" />
+											<p class="ingredient-name mt-2">
+												<a asp-controller="Ingredients" asp-action="Details" asp-route-id="@ingredient.IngredientId">@ingredient.Ingredient.Name</a>
+											</p>
+										</div>
 									</div>
 								}
 							</div>
 						</p>
+
 
 					</div>
 				</div>

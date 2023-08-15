@@ -1,54 +1,57 @@
 ﻿@model List<Order>
 
-@{ 
+@{
     ViewData["Title"] = "Order History";
 }
 
-<div class="row">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h4>Order History</h4>
-        </p>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Items</th>
-                    <th>Total</th>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <th>User</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var order in Model)
-                {
-                <tr>
-                    <td class="align-middle">@order.Id</td>
-                    <td class="align-middle">
-                        <ul style="list-style-type:none">
-                            @foreach (var item in order.OrderItems)
+<div class="container order-history-container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h1 class="text-center mb-4">Order History</h1>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                             {
-                                <li>
-                                    <div class="alert alert-info" role="alert">
-                                        <span class="badge bg-success">@item.Quantity</span> [@item.Price.ToString("c")] - @item.Tea.Name
-                                    </div>
-                                </li>
+                                <th>User</th>
                             }
-                        </ul>
-                    </td>
-                    <td class="align-middle">
-                            @order.OrderItems.Select(t => t.Tea.Price * t.Quantity).Sum().ToString("c")
-                    </td>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <td class="align-middle"> @order.User.FullName </td>
-                    }
-                    </tr>
-                }
-            </tbody>
-        </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td class="align-middle">@order.Id</td>
+                                <td class="align-middle">
+                                    <ul class="list-unstyled">
+                                        @foreach (var item in order.OrderItems)
+                                        {
+                                            <li class="mb-2">
+                                                <div class="alert alert-primary mb-0" role="alert">
+                                                    <span class="badge text-black badge-success">@item.Quantity</span>
+                                                    <span class="ml-2">@item.Tea.Name</span>
+                                                    <span class="badge text-black badge-info float-right">@item.Price.ToString("c")</span>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge badge-success text-black">@order.OrderItems.Select(t => t.Tea.Price * t.Quantity).Sum().ToString("c")</span>
+                                </td>
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <td class="align-middle">@order.User.FullName</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
